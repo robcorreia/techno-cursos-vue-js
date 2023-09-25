@@ -1,27 +1,23 @@
 <template>
   <div>
-    <h1>Contato</h1>
-    <p>{{ data }}</p>
+    <div v-if="loading">
+      <Loading />
+    </div>
+    <div v-if="data">
+      <h1>Contato</h1>
+      <p>{{ data }}</p>
+    </div>
   </div>
 </template>
 <script>
+import fetchData from '@/mixins/fecthData.js'
+
+
 export default {
   name: 'contato',
-  data() {
-    return {
-      data: null,
-    }
-  },
-  methods: {
-    async fetchData() {
-      const response = await fetch('http://localhost:3000/contato');
-      const data = await response.json()
-      console.log(data)
-      this.data = data
-    }
-  },
+  mixins: [fetchData],
   created() {
-    this.fetchData()
+    this.fetchData('/contato')
   }
 }
 </script>
