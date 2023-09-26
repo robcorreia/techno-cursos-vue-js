@@ -26,6 +26,8 @@ body {
 
 ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 a {
@@ -42,5 +44,30 @@ a.router-link-active {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+}
+
+.v-enter {
+  opacity: 0;
+  transform: translate3d(-20px, 0, 0);
+}
+
+.v-enter-active {
+  transition: all .3s;
+}
+
+img {
+  max-width: 100%;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr minmax(200px, 400px);
+  grid-gap: 40px
+}
+
+@media screen and (max-width: 400px) {
+  .content {
+    display: block;
+  }
 }
 </style>

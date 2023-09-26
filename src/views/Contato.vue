@@ -3,10 +3,15 @@
     <div v-if="loading">
       <Loading />
     </div>
-    <div v-if="data">
-      <h1>Contato</h1>
-      <p>{{ data }}</p>
-    </div>
+    <transition>
+      <div v-if="data">
+        <h1>{{ data.titulo }}</h1>
+        <p>{{ data.descricao }}</p>
+        <ul>
+          <li v-for="(item, index) in data.contato"><strong>{{ index }}:</strong> {{ item }}</li>
+        </ul>
+      </div>
+    </transition>
   </div>
 </template>
 <script>
